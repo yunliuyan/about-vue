@@ -1,0 +1,213 @@
+@import "../../assets/style/variable";
+@import "../../assets/style/mixin";
+.banner{
+  height: 392px;
+  background-color: $purple;
+  overflow: hidden;
+  background: url("../../assets/img/Home/banner.png");
+  background-size: cover;
+  .banner-wrap{
+    @include horizental-align-width;
+    color: #fff;
+    h2,p,h3{
+      width: 444px;
+      transition: all .375s;
+    }
+    h2{
+      margin-top: 58px;
+      font-size: 46px;
+      span{
+        font-size: 35px;
+      }
+
+      transform: translateX(-20px);
+      opacity: 0;
+      &.active{
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    p{
+      font-size: 24px;
+      margin-top: 20px;
+      letter-spacing: 6px;
+      transition-delay: 0.5s;
+      transform: translateY(-20px);
+      font-family: "SimSun";
+      text-align: right;
+      opacity: 0;
+      &.active{
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    h3{
+      text-align: right;
+      margin-top: 20px;
+      font-size:  24px;
+      transform: translateX(20px);
+      transition-delay: 1s;
+      opacity: 0;
+      &.active{
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.title{
+  @include horizental-align-width;
+  color: $purple;
+  font-size: $fz-medium;
+  cursor: pointer;
+}
+
+.util-group{
+  @include horizental-align-width;
+  li{
+    width: 240px;
+    float: left;
+    text-align: center;
+    padding-top: 45px;
+    margin-bottom: 45px;
+    &:hover,&.active{
+      .iconfont{
+        &.icon-shadow{
+          transform: translateX(-45%) ;
+          opacity: .3 ;
+        }
+      }
+    }
+    .icon-box{
+      position: relative;
+      height: 80px;
+    }
+    .iconfont{
+      font-size: 80px;
+      background: linear-gradient(to top right, #6d5dea, #cc90ff);
+      -webkit-background-clip: text;
+      color: transparent;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 11;
+      &.icon-shadow{
+        position: absolute;
+        opacity: 0;
+        color: $purple;
+        left: 50%;
+        transform: translateX(-50%);
+        @include transition(all)
+      }
+
+    }
+    .text{
+      display: block;
+      color: $color;
+      line-height: 1.8em;
+      margin-top: $distance;
+    }
+  }
+  .cascading{
+    box-sizing: border-box;
+    background-color: #fcfcfc;
+    border: 1px solid #e2e2e2;
+    box-shadow: inset 0px 1px 1px rgba(226,226,226,.3);
+    border-left: none;
+    border-right: none;
+    position: relative;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    @include transition(all);
+    &.active{
+      height: 190px;
+      opacity: 1;
+      overflow: visible;
+    }
+    .cascading-arrow{
+      width: 30px;
+      height: 30px;
+      background-color: #fcfcfc;
+      border-left: 1px solid #e2e2e2;
+      border-top: 1px solid #e2e2e2;
+      position: absolute;
+      transform: rotate(45deg);
+      top: -16px;
+      left: 108px;
+    }
+    .cascading-content{
+      padding: 0 30px;
+    }
+  }
+  .btn.ppy-button{
+    margin: 20px;
+  }
+}
+.workbench{
+  h2{
+    font-size: 16px;
+    padding: 0 50px;
+    letter-spacing: 4px;
+  }
+  .content{
+    padding: 0 70px;
+    padding-top: 30px;
+  }
+  .btn.ppy-button{
+    margin-bottom: 40px;
+    margin-right: 20px;
+  }
+}
+.explain{
+  padding: 40px 60px;
+  h2{
+    text-align: center;
+    font-weight: 700;
+    font-size: $fz-medium;
+    margin-bottom: 50px;
+  }
+  p{
+    line-height: 30px;
+    font-size: $fz;
+    margin-bottom: 30px;
+    text-indent: 2em;
+    span{
+      color: #ff2c2c;
+      margin-right: 15px;
+    }
+  }
+  .button{
+    margin-top: 0px;
+  }
+}
+
+.button{
+  margin-top: 40px;
+  text-align: center;
+  a{
+    display: inline-block;
+    width: 290px;
+    height: 46px;
+    background-color: #6d5dea;
+    @include rounded(23px);
+    color: #fff;
+    letter-spacing: 10px;
+    line-height: 46px;
+    text-decoration: none;
+    &:hover{
+      background: linear-gradient(to top right,#6d5dea, #7d7ef8);
+    }
+  }
+}
+
+.to-set{
+  text-align: center;
+  .img{
+    letter-spacing: 3px;
+    p{
+      margin: 10px;
+    }
+  }
+}
