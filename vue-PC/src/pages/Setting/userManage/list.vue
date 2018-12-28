@@ -14,9 +14,9 @@
             <el-row>
               <el-col :span="3"><div class="cloumn-avatar"><img :src="item.avatar" /></div></el-col>
               <el-col :span="3"><div class="cloumn-name">{{item.name}}</div></el-col>
-              <el-col :span="11"><div class="cloumn-role">{{item.phone}}</div></el-col>
-              <el-col :span="6"><div class="cloumn-setting" @click="changeRoleFun(index)"><i class="iconfont icon-PCchawanwu_shezhi"></i><span>{{item.role}}</span></div></el-col>
-              <el-col :span="1"> <div class="cloumn-del" @click="delModelShow(item.role,item.name)"><i class="iconfont icon-PCchawanwu_shanchu-"></i></div></el-col>
+              <el-col :span="11"><div class="cloumns-role">{{item.phone}}</div></el-col>
+              <el-col :span="6"><div class="cloumns-setting" @click="changeRoleFun(index)"><i class="iconfont icon-PCchawanwu_shezhi"></i><span>{{item.role}}</span></div></el-col>
+              <el-col :span="1"> <div class="cloumns-del" @click="delModelShow(item.role,item.name)"><i class="iconfont icon-PCchawanwu_shanchu-"></i></div></el-col>
             </el-row>
         </div>
       </div>
@@ -360,14 +360,7 @@
                     top: 23px;
                   }
                 }
-                .cloumn-name {
-                 
-                }
-                .cloumn-role {
-                  
-                }
-                .cloumn-setting {
-                 
+                .cloumns-setting {   
                   cursor: pointer;
                   i {
                     color: #6d5dea;
@@ -381,10 +374,10 @@
                     margin-left: 12px;
                   }
                 }
-                .cloumn-del:hover {
+                .cloumns-del:hover {
                   color: #6d5dea;
                 }
-                .cloumn-del {
+                .cloumns-del {
                   
                   cursor: pointer;
                   i {

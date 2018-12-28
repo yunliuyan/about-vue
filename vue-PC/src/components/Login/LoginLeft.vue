@@ -8,17 +8,42 @@
   </div>
 </template>
 <script>
-import  { mapGetters }  from 'vuex'
+
   export default {
     data() {
       return {
+        menus: [
+          {
+            path: require('@/assets/image/Login/lattice1.png'),
+          },
+          {
+            path: require('@/assets/image/Login/lattice2.png'),
+          },
+          {
+            path: require('@/assets/image/Login/lattice3.png'),
+          },
+          {
+            path: require('@/assets/image/Login/lattice4.png'),
+          },
+          {
+            path: require('@/assets/image/Login/lattice5.png'),
+          },
+          {
+            path: require('@/assets/image/Login/lattice6.png'),
+          },
+          {
+            path: require('@/assets/image/Login/lattice7.png'),
+          },
+          {
+            path: require('@/assets/image/Login/lattice8.png'),
+          },
+          {
+            path: require('@/assets/image/Login/lattice9.png'),
+          },
+        ]
       }
     },
-    computed: {
-      ...mapGetters([
-        'menus',
-      ])
-    },
+
     methods: {},
     mounted() {
         
