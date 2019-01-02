@@ -50,9 +50,9 @@
               </div>
             </transition >
             <transition name="fade-registered">
-              <div v-if="isRegistered" class="right-registered" style="margin-left:6%">
+              <div v-if="isRegistered" class="right-registered" style="margin-left:9%;margin-top:0">
                 <div class="background-black" @click="goRegistered"></div>
-                <div v-if="!isLoginSuccess" class="right-content right-registered" style="margin-left: 11%">
+                <div v-if="!isLoginSuccess" class="right-content right-registered" style="margin-left: 10%">
                     <div class="login-title">注册账号</div>
                     <div class="login-form" style="height: 227px">
                       <label>
@@ -88,9 +88,9 @@
                   <div class="success-go-login" @click="goRegistered">返回登录</div>
                 </div>
               </div > 
-              <div v-if="isForgetPw" class="right-registered" style="margin-left:6%">
+              <div v-if="isForgetPw" class="right-registered" style="margin-left:9%;margin-top:0">
                 <div class="background-black" @click="getPassword"></div>
-                <div v-if="!isFindSuccess&&!isChangePw" class="right-content right-registered" style="margin-left: 11%">
+                <div v-if="!isFindSuccess&&!isChangePw" class="right-content right-registered" style="margin-left: 10%">
                     <div class="login-title">找回密码</div>
                     <div class="login-form" style="height: 210px">
                       <label>
