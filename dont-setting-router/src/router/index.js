@@ -2,45 +2,94 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import { humpToLine } from '@/utils/util'
 Vue.use(Router)
+let routes = []
 
-const routerArr = require.context('@/view', true, /\.vue$/).keys()
+const routerArr = require.context('@/views', true, /\.vue$/).keys()
+const insert = (url) => {
+  let urlArr = url.slice(2).split('/')
+  //移除vue文件
+  urlArr.pop()
 
-let routes = [
-  {
-    path: '',
-    name: 'home_index',
-    redirect: '/home_index',
-    component: () => import(`@/view/homeIndex/homeIndex.vue`),
-  },
-]
-routerArr.forEach((item) => {
-  let itemUrl = item.slice(2)
-  let newItem = itemUrl.split('/')
-  let itemObj = {}
-  if (newItem.length < 2) {
-    alert('数据读取错误，请按照约定进行设置文件')
-  } else {
-    itemObj = {
-      path: `/${humpToLine(newItem[0])}`,
-      name: humpToLine(newItem[0]),
-      component: () => import(`@/view/${newItem[0]}/${newItem[0]}.vue`),
-      meta: { isRoot: true },
-      children: [],
+  console.log(urlArr)
+
+  let node = routes
+  let path = ''
+  urlArr.forEach((item, index) => {
+    let humpItem = item
+    item = humpToLine(item)
+    path = index ? path : ''
+    console.log(node.some((val) => val.name === item))
+    if (node.some((val) => val.name === item)) {
+      for (let i = 0; i < node.length; i++) {
+        if (node[i].name === item) {
+					console.log(i)
+					
+          path += `/${humpItem}`
+          node = node[i].children
+          return true
+        }
+      }
+    } else {
+      path += `/${humpItem}`
+      console.log(`${path}/${humpItem}.vue`)
+      let componentPath = `${path}/${humpItem}.vue`
+      node.push({
+        path: index ? item : `/${item}`,
+        name: item,
+        component: () => import(`@/views${componentPath}`),
+        children: [],
+      })
+      node = node[node.length - 1].children
     }
-    if (newItem.length === 3) {
-      itemObj.children = [
-        {
-          path: humpToLine(newItem[newItem.length-2]),
-          name: humpToLine(newItem[newItem.length-2]),
-          component: () => import(`@/view/${itemUrl}`),
-          children: [],
-        },
-      ]
-    }
-  }
-  routes.push(itemObj)
+  })
+}
+routerArr.forEach((element) => {
+  insert(element)
 })
-console.log(routes)
+
+console.log(routes.concat({
+	path: '',
+	name: 'home_index',
+	redirect: '/home_index',
+	component: () => import(`@/views/homeIndex/homeIndex.vue`),
+}),)
+routes = routes.concat({
+	path: '',
+	name: 'home_index',
+	redirect: '/home_index',
+	component: () => import(`@/views/homeIndex/homeIndex.vue`),
+})
 export default new Router({
-  routes,
+  routes
+  // routes: [
+  //   {
+  //     path: '',
+  //     name: 'home_index',
+  //     redirect: '/home_index',
+  //     component: () => import(aa),
+  //   },
+  //   {
+  //     path: '/home_index',
+  //     name: 'home_index',
+  //     component: () => import(aa),
+  //   },
+  //   {
+  //     path: '/home_index',
+  //     name: 'home_index',
+  //     component: () => import(aa),
+  //     children: [
+  //       {
+  //         path: 'index_children',
+  //         name: 'index_children',
+  //         component: () =>
+  //           import(`@/views/homeIndex/indexChildren/indexChildren.vue`),
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     path: '/home_category',
+  //     name: 'home_category',
+  //     component: () => import(`@/views/homeCategory/homeCategory.vue`),
+  //   },
+  // ],
 })
